@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        p span {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Purchase Details</h1>
+        <p><span>VM Name:</span> {{ vm_name }}</p>
+        <p><span>VM Cores:</span> {{ vm_cores }}</p>
+        <p><span>VM Memory:</span> {{ vm_memory }}</p>
+        <p><span>Disk Size:</span> {{ disk_size }}</p>
+    </div>
+</body>
+</html>

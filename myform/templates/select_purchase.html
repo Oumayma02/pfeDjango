@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Confirm Purchases</title>
+</head>
+<body>
+    <h1>Confirm Purchases</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>VM Name</th>
+                <th>VM Cores</th>
+                <th>VM Memory</th>
+                <th>Disk Size</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in purchases %}
+            <tr>
+                <td>{{ purchase.vm_name }}</td>
+                <td>{{ purchase.vm_cores }}</td>
+                <td>{{ purchase.vm_memory }}</td>
+                <td>{{ purchase.disk_size }}</td>
+                <td>
+                    <form method="post" action="{% url 'admin_confirm_purchase' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="purchase_id" value="{{ purchase.id }}">
+                        <button type="submit" name="action" value="confirm">Confirm</button>
+                        <button type="submit" name="action" value="deny">Deny</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">No purchases to display.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

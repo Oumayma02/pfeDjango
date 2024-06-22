@@ -1,0 +1,24 @@
+<!-- purchase_change_list.html -->
+
+<h1>Select Purchase to View</h1>
+<ul>
+    {% for purchase in purchases %}
+    <li>
+        <p>VM Name: {{ purchase.vm_name }}</p>
+        <p>VM Cores: {{ purchase.vm_cores }}</p>
+        <p>VM Memory: {{ purchase.vm_memory }}</p>
+        <p>Disk Size: {{ purchase.disk_size }}</p>
+        <form method="POST" action="{% url 'admin_confirm_purchase' purchase.id %}">
+            {% csrf_token %}
+            <button type="submit">Confirm Purchase</button>
+        </form>
+    </li>
+    {% empty %}
+    <li>No purchases to display.</li>
+    {% endfor %}
+</ul>
+
+<form method="POST" action="{% url 'trigger_jenkins_build' %}">
+    {% csrf_token %}
+    <button type="submit">Trigger Jenkins Build</button>
+</form>
